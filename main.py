@@ -1,4 +1,5 @@
 from PIL import Image, ImageColor
+from tqdm import tqdm
 
 
 # img.getpixel((x/y))
@@ -9,38 +10,31 @@ from PIL import Image, ImageColor
 
 img = Image.open("pic.jpg")
 width, height = img.size
-img2 = Image.new('RGB',(width,height),(255,255,255))
+img2 = Image.new('RGB',(width + 1,height + 1),(255,255,255))
 percent = 0
 
 #img2.putpixel((50,50),(50,50,50,255))
 #test = img.getpixel(50, 50)
 #print(test)
+#r = img.getpixel((50,50))[0]
+#print(r)
 
 
+w = 0
+h = 0
+for w in tqdm(range(3,width)):
+    for h in range(3,height):
+        #percent+=1
+        #img2.putpixel((int(h/2),w),(w,h,50,255))
+        #print(percent/(width*height))
 
-
-for w in range(width):
-    for h in range(height):
-        percent+=1
-        img2.putpixel((h,w),(50,50,50,255))
-        print(percent/(width*height))
-
-    print("---------------------------------------------------------------")
-"""
-        if(w<20):
-            img2.putpixel((h,w),50,50,50)
-        #    img2.putpixel((h,w), 50,50,50)
-        #    img2.putpixel((h,w),        )
 
         if(w<20):
-
-            img2.Draw.point((h,w-20),(img.getpixel((h,w)),img.getpixel((h,w)),img.getpixel((h,w))))
+            img2.putpixel((h+1,w+1),(img.getpixel((h,w))[0],img.getpixel((h,w))[1],img.getpixel((h,w))[2]))
+        if(w<20):
+            img2.putpixel((h,w),(img.getpixel((h,w))[0],img.getpixel((h,w))[1],img.getpixel((h,w))[2]))
         else:
-
-            img2.Draw.point((h,w-20),(img.getpixel((h,w)),img.getpixel((h,w)),img.getpixel((h,w+20))))
-
-        percent+=1
-"""
+            img2.putpixel((h,w),(img.getpixel((h,w))[0],img.getpixel((h,w))[1],img.getpixel((h,w))[2]))
 
 
 
