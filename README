@@ -1,0 +1,4 @@
+to install 
+git clone https://github.com/amaxwell433/gitpic.git
+
+pip3 install -r requirements.txt
